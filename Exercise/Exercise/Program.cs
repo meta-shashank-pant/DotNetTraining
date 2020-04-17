@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.IO;
 
 namespace Exercise
 {
@@ -15,11 +16,82 @@ namespace Exercise
         {
             
             Console.WriteLine("Hello World!");
-            //ContinueBreakStatement();
-            //Arrays();
-            //Greeting("Liam");
-            //Console.WriteLine(Concat("Hello ","Friend"));
-            Greeting("Adam",32);
+
+            //Object creation
+            /*Class1 obj = new Class1();
+            obj.Statement();*/
+
+            //Subject class
+            /*Subject sub1 = new Subject();
+            sub1.Name = "Data Structure";
+            sub1.Marks = 70;
+            sub1.Code = "DS123";
+            sub1.FavTopic = "Graphs";
+            Console.WriteLine("Favourite Topic: "+sub1.FavTopic);
+            sub1.Status();*/
+
+            //Inheritance and Polymorphism Testing
+            /* Animal animal = new Animal();
+             Lion lion = new Lion();
+             Giraffe giraffe = new Giraffe();
+             animal.Voice();
+             lion.Voice();
+             giraffe.Voice(); */
+
+            //Abstract Class
+            /* Car car = new Car();
+             car.EnginePower();
+             car.VehicleInfo("Audi",4); */
+
+            //Interface
+            /* ScienceBook sb = new ScienceBook();
+             sb.BookTitle();
+             sb.BookPrice(); */
+
+            //enums test
+            /*Status status = Status.Success;
+            if (status.Equals(Status.Success))
+            {
+                Console.WriteLine("Your status is success.");
+            } */
+
+            //Files();
+            //ExceptionHandling();
+
+        }
+
+        static void ExceptionHandling()
+        {
+            int x = 5, y = 0;
+            try
+            {
+                Console.WriteLine(x/y);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Values of x and y are: "+x+" and "+y);
+            }
+        }
+
+        static void Files()
+        {
+            //read text from a file
+            string readText = File.ReadAllText("DemoText.txt");
+            Console.WriteLine(readText);
+
+            string writeText = " How are you?";
+
+            //write text to the file by removing all the text before.
+            //File.WriteAllText("DemoText.txt", writeText);
+
+            //Append to the end of the file.
+            File.AppendAllText("DemoText.txt", writeText);
+
+
         }
 
         public static string Concat(string str1, string str2)
