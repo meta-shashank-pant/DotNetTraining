@@ -18,7 +18,7 @@ namespace ZooManagement
                         return true;
                     status = Service.AddAnimal(animal);
                     if (!status)
-                        Console.WriteLine("Out on capacity, add a cage.");
+                        Console.WriteLine("OUT ON CAPACITY, PLEASE ADD A CAGE AND PROCEED.");
                     return true;
                 case 2:
                     //Remove Animal
@@ -30,6 +30,11 @@ namespace ZooManagement
                     return true;
                 case 3:
                     //Add a cage
+                    Zone zone = Program.SelectZone();
+                    if (zone == null)
+                        return true;
+                    Cage cage = Program.CreateCageObject(zone);
+                    Service.AddCage(zone, cage);
                     return true;
                 case 4:
                     //Display animal

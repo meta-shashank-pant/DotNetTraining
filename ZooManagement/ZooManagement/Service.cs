@@ -73,5 +73,11 @@ namespace ZooManagement
             }
             return false;
         }
+
+        //This method will add the cage in an Zone for specific animal.
+        public static bool AddCage(Zone zone, Cage cage)
+        {
+            return zone.AddCage(cage);
+        }
     }
 }

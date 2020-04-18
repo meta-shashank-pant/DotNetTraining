@@ -120,7 +120,6 @@ namespace ZooManagement
         }
     }
 
-
     class Bird : Animal
     {
         public override string getSound()
@@ -160,7 +159,6 @@ namespace ZooManagement
             return "Chirping";
         }
     }
-
 
     class Aquatic : Animal
     {

@@ -16,7 +16,7 @@ namespace ZooManagement
                   try
                   {
                       Console.WriteLine("\nEnter Your Choice:\n1. Add Animal\n2. Remove Animal\n3. Add a Cage\n4. Display Animal\n5. Exit");
-                      int choice = Convert.ToInt32(Console.ReadLine());
+                      int choice = TakeIntegerInput();
                       bool status = Controller.StartSystem(choice);
                       if (!status)
                           break;
@@ -28,6 +28,193 @@ namespace ZooManagement
               }
 
               Console.WriteLine("Successfully Exit."); 
+
+        }
+
+        //This method is used to create object of Cage class.
+        public static Cage CreateCageObject(Zone zone)
+        {
+            String category = zone.AnimalCategory;
+            int selectedAnimal;
+            string animalName;
+            int capacity;
+            switch (category)
+            {
+                case "Mammal":
+                    wrongMammalChoice:
+                    Console.WriteLine("Select animal type:\n1. Lion\n2. Elephant");
+                    selectedAnimal = TakeIntegerInput();
+                    if(selectedAnimal == 1)
+                    {
+                        animalName = "Lion";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }else if(selectedAnimal == 2)
+                    {
+                        animalName = "Elephant";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Choice!");
+                        goto wrongMammalChoice;
+                    }
+                case "Aquatic":
+                wrongAquaticChoice:
+                    Console.WriteLine("Select animal type:\n1. Fish\n2. Seal");
+                    selectedAnimal = TakeIntegerInput();
+                    if (selectedAnimal == 1)
+                    {
+                        animalName = "Fish";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else if (selectedAnimal == 2)
+                    {
+                        animalName = "Seal";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Choice!");
+                        goto wrongAquaticChoice;
+                    }
+
+                case "Reptile":
+                    wrongReptileChoice:
+                    Console.WriteLine("Select animal type:\n1. Crocodile\n2. Lizard");
+                    selectedAnimal = TakeIntegerInput();
+                    if (selectedAnimal == 1)
+                    {
+                        animalName = "Crocodile";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else if (selectedAnimal == 2)
+                    {
+                        animalName = "Lizard";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Choice!");
+                        goto wrongReptileChoice;
+                    }
+                case "Bird":
+                wrongBirdChoice:
+                    Console.WriteLine("Select animal type:\n1. Peacock\n2. Sparrow");
+                    selectedAnimal = TakeIntegerInput();
+                    if (selectedAnimal == 1)
+                    {
+                        animalName = "Peacock";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else if (selectedAnimal == 2)
+                    {
+                        animalName = "Sparrow";
+                        capacity = CageCapacity();
+                        return new Cage(animalName, capacity);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Choice!");
+                        goto wrongBirdChoice;
+                    }
+
+                default:
+                    return null;
+            }
+        }
+
+        //This method takes input for capacity.
+        static int CageCapacity()
+        {
+            wrongCapacity:
+            Console.Write("Enter cage capacity(between 1 to 100): ");
+            int capacity = TakeIntegerInput();
+            if (capacity < 1 || capacity > 100)
+            {
+                Console.WriteLine("Enter Capacity between 1 and 100.");
+                goto wrongCapacity;
+            }
+            return capacity; 
+        }
+
+        //This method helps SelectZone() method for selecting the zone on the basis of animal category.
+        static Zone getZone(string category)
+        {
+            List<Zone> availableZones = new List<Zone>();
+            int index = 0, i = 0;
+            wrongOption:
+            Console.WriteLine("Available zones are: ");
+            foreach (Zone zone in Zone.zones)
+            {
+                i++;
+                if (zone.AnimalCategory == category)
+                {
+                    Console.WriteLine((++index) + ". Zone" + i);
+                    availableZones.Add(zone);
+                }
+            }
+            //If there is only one zone than select that by default.
+            if (index == 1)
+                return availableZones[index - 1];
+
+            Console.Write("Choose 1 option: ");
+            int option = TakeIntegerInput();
+            if (option <= 0 || option > index)
+            {
+                Console.WriteLine("Please select appropriate value.");
+                goto wrongOption;
+            }
+            return availableZones[index - 1];
+        }
+
+        //This method is used to get the zone by user inputs.
+        public static Zone SelectZone()
+        {
+            try
+            {
+                wrongCategory:
+                Console.WriteLine("Select the animal category:\n1. Mammal\n2. Reptile\n3. Bird\n4. Aquatic\n5. Cancel");
+                int selectedCategory = TakeIntegerInput();
+                
+                switch (selectedCategory)
+                {
+                    case 1:
+                        //Mammal
+                        return getZone("Mammal");
+
+                    case 2:
+                        //Reptile
+                        return getZone("Reptile");
+
+                    case 3:
+                        //Bird
+                        return getZone("Bird");
+
+                    case 4:
+                        //Aquatic
+                        return getZone("Aquatic");
+
+                    case 5:
+                        //Go Back
+                        return null;
+
+                    default:
+                        goto wrongCategory;
+                }
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
 
         }
 
@@ -78,6 +265,20 @@ namespace ZooManagement
             public string name;
             public int age;
             public double weight;
+        }
+
+        //This method is used for checking Duplicacy in name.
+        static bool CheckDuplicateName(string name)
+        {
+            foreach(Animal animal in DbAnimals)
+            {
+                if(animal.Name.ToLower() == name.ToLower())
+                {
+                    Console.WriteLine("Animal with name "+name+", already exists.");
+                    return false;
+                }
+            }
+            return true;
         }
 
         //This method is used to return animal object to controller
@@ -164,7 +365,7 @@ namespace ZooManagement
             wrongName:
             Console.Write("Enter name: ");
             name = TakeStringInput();
-            if (name == null)
+            if (name == null || !CheckDuplicateName(name) || name.Length == 0)
                 goto wrongName;
 
             wrongAge:
