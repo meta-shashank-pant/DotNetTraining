@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.exe
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.deps.json
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.runtimeconfig.json
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.runtimeconfig.dev.json
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.dll
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\bin\Debug\netcoreapp3.1\ZooManagement.pdb
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.AssemblyInfoInputs.cache
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.AssemblyInfo.cs
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.dll
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.pdb
+C:\Users\Shashank\Source\Repos\ZooManagement\ZooManagement\obj\Debug\netcoreapp3.1\ZooManagement.genruntimeconfig.cache
