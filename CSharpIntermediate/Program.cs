@@ -38,24 +38,24 @@ namespace CSharpIntermediate
 
             //Use of delegate
             //Normal use:
-            DelegateOperation operation = new DelegateOperation(DelegateClass.FindMax);
-            Console.WriteLine(operation(5,6));
-            operation = new DelegateOperation(DelegateClass.FindMin);
-            Console.WriteLine(operation(5, 6));
+            DelegateOperation operation = new DelegateOperation(DelegateClass.PrintMax);
+            operation(5, 6);
+            operation = new DelegateOperation(DelegateClass.PrintMin);
+            operation(5, 6);
             Console.WriteLine();
 
             //Array of Delegates
             DelegateOperation[] operations =
             {
-                new DelegateOperation(DelegateClass.FindMax),
-                new DelegateOperation(DelegateClass.FindMin)
+                new DelegateOperation(DelegateClass.PrintMax),
+                new DelegateOperation(DelegateClass.PrintMin)
             };
 
             for(int i=0; i<operations.Length; i++)
             {
-                Console.WriteLine(operations[i](7, 8));
-                Console.WriteLine(operations[i](3, 1));
-                Console.WriteLine(operations[i](72, 34));
+                operations[i](7, 8);
+                operations[i](3, 1);
+                operations[i](72, 34);
             }
             Console.WriteLine();
 
