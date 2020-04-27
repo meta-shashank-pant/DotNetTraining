@@ -1,2 +1,3 @@
 # DotNetTraining
-This repository contains beginner level project of C# and .NET.
+# CSharp Advanced
+The Form1.cs file contains all the required code in Serialization project.
