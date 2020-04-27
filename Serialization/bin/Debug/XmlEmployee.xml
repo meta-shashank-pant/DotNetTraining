@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Employee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Shashank</Name>
+  <Phone>0987654321</Phone>
+  <DoB>1998-06-16T12:57:29</DoB>
+  <Department>CSE</Department>
+  <Salary>12000</Salary>
+</Employee>

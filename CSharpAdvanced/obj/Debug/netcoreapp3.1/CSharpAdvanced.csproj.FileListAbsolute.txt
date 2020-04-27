@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.exe
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.deps.json
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.runtimeconfig.json
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.runtimeconfig.dev.json
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.dll
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\bin\Debug\netcoreapp3.1\CSharpAdvanced.pdb
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.AssemblyInfoInputs.cache
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.AssemblyInfo.cs
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.dll
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.pdb
+C:\Users\Shashank\Source\Repos\CSharpAdvanced\obj\Debug\netcoreapp3.1\CSharpAdvanced.genruntimeconfig.cache

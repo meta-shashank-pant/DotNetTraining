@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\Serialization\bin\Debug\Serialization.exe.config
+C:\Users\Shashank\Source\Repos\Serialization\bin\Debug\Serialization.exe
+C:\Users\Shashank\Source\Repos\Serialization\bin\Debug\Serialization.pdb
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.Form1.resources
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.Properties.Resources.resources
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.csproj.GenerateResource.cache
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.exe
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.pdb
+C:\Users\Shashank\Source\Repos\Serialization\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shashank\Source\Repos\Serialization\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shashank\Source\Repos\Serialization\obj\Debug\Serialization.csproj.CopyComplete
