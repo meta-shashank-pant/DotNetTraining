@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.exe
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.deps.json
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.runtimeconfig.json
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.runtimeconfig.dev.json
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.dll
+C:\Users\Shashank\Source\Repos\LinqCourse\bin\Debug\netcoreapp3.1\LinqCourse.pdb
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.AssemblyInfoInputs.cache
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.AssemblyInfo.cs
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.dll
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.pdb
+C:\Users\Shashank\Source\Repos\LinqCourse\obj\Debug\netcoreapp3.1\LinqCourse.genruntimeconfig.cache

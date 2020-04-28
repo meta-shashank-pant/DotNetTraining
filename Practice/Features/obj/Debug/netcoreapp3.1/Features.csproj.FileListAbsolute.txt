@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.exe
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.deps.json
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.runtimeconfig.json
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.runtimeconfig.dev.json
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.dll
+C:\Users\Shashank\Source\Repos\Features\bin\Debug\netcoreapp3.1\Features.pdb
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.AssemblyInfoInputs.cache
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.AssemblyInfo.cs
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.dll
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.pdb
+C:\Users\Shashank\Source\Repos\Features\obj\Debug\netcoreapp3.1\Features.genruntimeconfig.cache

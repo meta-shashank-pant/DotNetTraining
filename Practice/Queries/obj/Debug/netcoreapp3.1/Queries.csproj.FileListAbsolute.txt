@@ -1,0 +1,13 @@
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.exe
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.deps.json
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.runtimeconfig.json
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.runtimeconfig.dev.json
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.dll
+C:\Users\Shashank\Source\Repos\Queries\bin\Debug\netcoreapp3.1\Queries.pdb
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.csproj.CoreCompileInputs.cache
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.AssemblyInfoInputs.cache
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.AssemblyInfo.cs
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.dll
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.pdb
+C:\Users\Shashank\Source\Repos\Queries\obj\Debug\netcoreapp3.1\Queries.genruntimeconfig.cache
