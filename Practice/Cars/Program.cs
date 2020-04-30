@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Cars
 {
@@ -9,12 +11,14 @@ namespace Cars
     {
         static void Main(string[] args)
         {
-            var cars = ProcessCars("fuel.csv");
-            var manufacturers = ProcessManufacturer("manufacturers.csv");
-            GetFuelEfficientCarByCountry(cars, manufacturers);
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CarDb>());
+            //var cars = ProcessCars("fuel.csv");
+            //var manufacturers = ProcessManufacturer("manufacturers.csv");
+            
             
         }
 
+        #region Process Manufacturer
         private static List<Manufacturer> ProcessManufacturer(string path)
         {
             var query = File.ReadAllLines(path)
@@ -32,7 +36,9 @@ namespace Cars
 
             return query.ToList();
         }
+        #endregion
 
+        #region Process Cars
         /// <summary>
         /// This method will process the csv file and create an list if cars from that.
         /// </summary>
@@ -47,6 +53,108 @@ namespace Cars
                     .ToCar()
                     .ToList();
         }
+        #endregion
+
+        #region Session 7
+
+        #region Create XML
+
+        /// <summary>
+        /// Using Linq to set the document, this is the short approach creating the xml file.
+        /// Although readablity might be an issue.
+        /// </summary>
+        /// <param name="records"></param>
+        static void ShortMethodOrientedApproach(IEnumerable<Car> records)
+        {
+            /// This approach is valid for both Element or Attribute ways of doing things.
+            /// Here line of codes are reduced.
+            var document = new XDocument();
+            //Here i am passing string but there will be implicit conversion to more formal XName object.
+            var cars = new XElement("Cars", 
+                                    from record in records
+                                    select new XElement("Car",
+                                                        new XAttribute("Name", record.Name),
+                                                        new XAttribute("Combined", record.Combined),
+                                                        new XAttribute("Manufacturer", record.Manufacturer)));
+
+            document.Add(cars);
+            document.Save("cars.xml");
+        }
+
+        /// <summary>
+        /// This approach is more readable and uses for loop for creating XML File.
+        /// </summary>
+        /// <param name="records"></param>
+        static void LongElementOrientedApproach(IEnumerable<Car> records)
+        {
+            var document = new XDocument();
+            //Here i am passing string but there will be implicit conversion to more formal XName object.
+            var cars = new XElement("Cars");
+
+            //Element oriented approach.
+            foreach (var record in records)
+            {
+                var car = new XElement("Car");
+                var name = new XElement("Name", record.Name);
+                var combined = new XElement("Combined", record.Combined);
+                car.Add(name);
+                car.Add(combined);
+                cars.Add(car);
+            }
+
+            document.Add(cars);
+            document.Save("cars.xml");
+        }
+        #endregion
+
+        #region Query XML
+        static void QueryXML()
+        {
+            var ns = (XNamespace)"http://LearnCSharp/cars/2016";
+            var ex = (XNamespace)"http://LearnCSharp/cars/2016/ex";
+
+            /// The XDocument completely loads the xml file onto the system, in case the xml file is
+            /// too large it is not a good approach, therefore we can use XML Document Older api which 
+            /// reads from the xml file only.
+            var document = XDocument.Load("cars.xml");
+                                                                                           // This tells that either the statement return something or we will return empty sequence of XElement.
+            var query = from car in document.Element(ns + "Cars")?.Elements(ns + "Car") ?? Enumerable.Empty<XElement>()
+                            // or we can use "from car in document.Descendants("Car")"
+                        where car.Attribute("Manufacturer")?.Value == "BMW"
+                        select car.Attribute("Name").Value;
+
+            foreach (var name in query)
+            {
+                Console.WriteLine(name);
+            }
+        }
+        #endregion
+
+        #region XML Namespace
+        static void XMLNamespace(IEnumerable<Car> records)
+        {
+            //defining namespace
+            var ns = (XNamespace)"http://LearnCSharp/cars/2016";
+            var ex = (XNamespace)"http://LearnCSharp/cars/2016/ex";
+
+            var document = new XDocument();
+            var cars = new XElement(ns + "Cars",
+                                    from record in records
+                                    select new XElement(ex + "Car",
+                                                        new XAttribute("Name", record.Name),
+                                                        new XAttribute("Combined", record.Combined),
+                                                        new XAttribute("Manufacturer", record.Manufacturer)));
+
+            cars.Add(new XAttribute(XNamespace.Xmlns + "ex", ex));
+
+            document.Add(cars);
+            document.Save("cars.xml");
+        }
+        #endregion
+
+        #endregion
+
+        #region Session 6
 
         #region Joining Data
 
@@ -218,6 +326,66 @@ namespace Cars
         }
         #endregion
 
+        #region Aggregating Data
+        static void AggregationOperation(IEnumerable<Car> cars)
+        {
+            var query = from car in cars
+                        group car by car.Manufacturer into CGroup
+                        select new
+                        {
+                            Name = CGroup.Key,
+                            Max = CGroup.Max(c => c.Combined),
+                            Min = CGroup.Min(c => c.Combined),
+                            Avg = CGroup.Average(c => c.Combined)
+                        } into result
+                        orderby result.Max descending
+                        select result;
+
+            foreach (var result in query)
+            {
+                Console.WriteLine("Name: " + result.Name);
+                Console.WriteLine("\tMax: " + result.Max);
+                Console.WriteLine("\tMin: " + result.Min);
+                Console.WriteLine("\tAvg: " + result.Avg);
+            }
+        }
+        #endregion
+
+        #region Efficient Aggregation with Extension Method.
+        static void EfficientAggregation(IEnumerable<Car> cars)
+        {
+            /// In the case of normal aggregation for calculating the min, max and avg
+            /// loop is running 1 time for each making total time = 3
+            /// To overcome this problem aggregation function is used.
+            var query = cars.GroupBy(c => c.Manufacturer)
+                            .Select(g =>
+                            {
+                                var results = g.Aggregate(new CarStatistics(),
+                                                    (acc, c) => acc.Accumulate(c),
+                                                    acc => acc.Compute());
+
+                                return new
+                                {
+                                    Name = g.Key,
+                                    Max = results.Max,
+                                    Min = results.Min,
+                                    Avg = results.Average
+                                };
+                            })
+                            .OrderByDescending(c => c.Max);
+
+            foreach (var result in query)
+            {
+                Console.WriteLine("Name: " + result.Name);
+                Console.WriteLine("\tMax: " + result.Max);
+                Console.WriteLine("\tMin: " + result.Min);
+                Console.WriteLine("\tAvg: " + result.Avg);
+            }
+        }
+        #endregion
+
+        #endregion
+
         #region Session 5
 
         #region Multiple Continous Sort
@@ -379,7 +547,61 @@ namespace Cars
         #endregion
 
         #endregion
+
+        #region Entity Framework
+        //private static void InsertData()
+        //{
+        //    var cars = ProcessCars("fuel.csv");
+        //    CarDb db = new CarDb();
+
+        //    if (!db.Cars.Any())
+        //    {
+        //        foreach (var car in cars)
+        //        {
+        //            db.Cars.Add(car);
+        //        }
+        //        db.SaveChanges();
+        //    }
+        //}
+        #endregion
     }
+
+    #region Accumulator class
+    /// <summary>
+    /// Here we used accumulator for aggregate function.
+    /// </summary>
+    public class CarStatistics
+    {
+        public CarStatistics()
+        {
+            Max = Int32.MinValue;
+            Min = Int32.MaxValue;
+        }
+
+        public CarStatistics Accumulate(Car car)
+        {
+            Total += car.Combined;
+            Count += 1;
+            Max = Math.Max(Max, car.Combined);
+            Min = Math.Min(Min, car.Combined);
+            return this;
+        }
+
+        public CarStatistics Compute()
+        {
+            Average = Total / Count;
+
+            return this;
+        }
+
+        public int Max { get; set; }
+        public int Min { get; set; }
+        public double Average { get; set; }
+        public int Total { get; set; }
+        public int Count { get; set; }
+
+    }
+    #endregion
 
     #region Car Extension Class
     public static class CarExtensions
