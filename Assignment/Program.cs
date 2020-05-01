@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Assignment
 {
@@ -51,7 +53,162 @@ namespace Assignment
             //Task 5.
             int start = 2, end = 5;
             ExtractListFromPositions(start, end);
-            
+
+            //Task 6.
+            JoinOperation();
+
+            //Task 7
+            ReadXML();
+
+        }
+
+        /// <summary>
+        /// This method is used to perform task 6 of assignments that are:
+        /// 1. Write a linq query to display the ProductId, ProductTitle and its Category Title.
+        /// 2. Write a linq query to display the ProductTitle and Category Title in the format:
+        ///     {ProductTitle: CategoryTitle}
+        ///     and if there is no product associated with a particular category
+        ///     it should show “No Product” instead of product title.
+        /// </summary>
+        private static void JoinOperation()
+        {
+            Console.WriteLine("\n\t\t\tTASK 6\n");
+            var products = CreateProducts();
+            var categories = CreateCategory();
+
+            /// In this query join operation is performed on products and categories lists
+            /// Join is performed on the basis of common column, here, CategoryId.
+            var query = from product in products
+                        join category in categories
+                        on product.CategoryId equals category.CategoryId
+                        select new
+                        {
+                            product.ProductId,
+                            product.ProductTitle,
+                            category.CategoryTitle
+                        };
+
+            foreach (var product in query)
+            {
+                Console.WriteLine($"{product.ProductId} : {product.ProductTitle,15} : {product.CategoryTitle}");
+            }
+            Console.WriteLine();
+
+            /// In this query we are making product and category pairs, if there are no product 
+            /// for an category, then "No Prodyct" will be displayed for that category.
+            var query2 = from category in categories
+                         join product in products
+                         on category.CategoryId equals product.CategoryId
+                         into gj  
+                         from sub in gj.DefaultIfEmpty() 
+                         select new
+                         {
+                             ProductTitle = sub?.ProductTitle ?? "No Product",
+                             category.CategoryTitle
+                         };
+
+            foreach (var product in query2)
+            {
+                Console.WriteLine($"{product.ProductTitle,15} : {product.CategoryTitle}");
+            }
+        }
+
+        /// <summary>
+        /// This method will convert product csv file to list of object of class product.
+        /// </summary>
+        /// <returns></returns>
+        private static List<Product> CreateProducts()
+        {
+            string path = "product.csv";
+            var query = File.ReadAllLines(path)
+                            .Where(l => l.Length > 1)
+                            .Select(l =>
+                            {
+                                var column = l.Split(",");
+                                return new Product
+                                {
+                                    ProductId = Convert.ToInt32(column[0]),
+                                    ProductTitle = column[1],
+                                    CategoryId = Convert.ToInt32(column[2])
+                                };
+                            });
+
+            return query.ToList();
+        }
+
+        /// <summary>
+        /// This method will convert category csv file to list of object of class category.
+        /// </summary>
+        /// <returns></returns>
+        private static List<Category> CreateCategory()
+        {
+            string path = "category.csv";
+            var query = File.ReadAllLines(path)
+                            .Where(l => l.Length > 1)
+                            .Select(l =>
+                            {
+                                var column = l.Split(",");
+                                return new Category
+                                {
+                                    CategoryId = Convert.ToInt32(column[0]),
+                                    CategoryTitle = column[1]
+                                };
+                            });
+
+            return query.ToList();
+        }
+
+        /// <summary>
+        /// This method performs all the queries in task 7.
+        /// Here taks performed are:
+        /// 1. Read XML via Linq.
+        /// 2. Display Id, Title, Genre and Price of the Books, sorted by Title.
+        /// 3. Display the Genre and count of the books under that genre.
+        /// </summary>
+        private static void ReadXML()
+        {
+            //  Load is used to load the xml file into an XDocument named "records".
+            var records = XDocument.Load("books.xml");
+
+            Console.WriteLine("\nDisplay Id, Title, Genre and Price of the Books, sorted by Title.\n");
+
+            /// This query is selecting id, title, genre, price from the records
+            /// In XML data is accessed with the help of "Element" and "Attribute" 
+            /// property as data can either be an element or attribute.
+            /// Here orderby is used to sort the data on the basis of title.
+            var query = from book in records.Element("catalog").Elements("book")
+                        orderby book.Element("title").Value
+                        select new
+                        {
+                            Id = book.Attribute("id").Value,
+                            Title = book.Element("title").Value,
+                            Genre = book.Element("genre").Value,
+                            Price = book.Element("price").Value
+                        };
+
+            foreach (var book in query)
+            {
+                Console.WriteLine($"{book.Id,6} : {book.Title,40} : {book.Genre,15} : {book.Price}");
+            }
+
+            Console.WriteLine("\nDisplay the Genre and count of the books under that genre.\n");
+
+            /// To count the elements by grouping them according to genre.
+            /// group by is used and grouping is done on the basis of genre
+            /// then with projection movie count is calculated in each genre.
+            var genreCounts = from book in records.Element("catalog").Elements("book")
+                              group book by book.Element("genre").Value
+                              into gGroup
+                              select new
+                              {
+                                  Genre = gGroup.Key,
+                                  Count = gGroup.Count()
+                              };
+
+            foreach (var book in genreCounts)
+            {
+                Console.WriteLine($"{book.Genre,15} : {book.Count}");
+            }
         }
 
         /// <summary>
@@ -61,6 +218,7 @@ namespace Assignment
         /// <param name="end">It is the ending index.</param>
         private static void ExtractListFromPositions(int start, int end)
         {
+            Console.WriteLine();
             if (start > end || start < 1 || end > 7)
             {
                 return;
@@ -84,6 +242,7 @@ namespace Assignment
         /// <param name="sentence"></param>
         private static void FilterAndDisplayUpperCaseWords(string sentence)
         {
+            Console.WriteLine();
             IEnumerable<string> words = sentence.Split(" ");
 
             //This query is helping in checking if the word is in uppercase or not.

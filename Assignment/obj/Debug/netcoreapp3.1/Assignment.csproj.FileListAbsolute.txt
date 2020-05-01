@@ -10,3 +10,6 @@ C:\Users\Shashank\Source\Repos\Assignment\obj\Debug\netcoreapp3.1\Assignment.Ass
 C:\Users\Shashank\Source\Repos\Assignment\obj\Debug\netcoreapp3.1\Assignment.dll
 C:\Users\Shashank\Source\Repos\Assignment\obj\Debug\netcoreapp3.1\Assignment.pdb
 C:\Users\Shashank\Source\Repos\Assignment\obj\Debug\netcoreapp3.1\Assignment.genruntimeconfig.cache
+C:\Users\Shashank\Source\Repos\Assignment\obj\Debug\netcoreapp3.1\Assignment.csprojAssemblyReference.cache
+C:\Users\Shashank\Source\Repos\Assignment\bin\Debug\netcoreapp3.1\category.csv
+C:\Users\Shashank\Source\Repos\Assignment\bin\Debug\netcoreapp3.1\product.csv
