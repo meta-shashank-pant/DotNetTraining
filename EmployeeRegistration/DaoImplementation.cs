@@ -14,10 +14,10 @@ namespace EmployeeRegistration
         static private SqlConnection con;
 
         /// <summary>
-        /// This is the extension method for inserting an employee data to the database.
+        /// Extension method for inserting an employee data to the database.
         /// </summary>
-        /// <param name="emp">This object holds the values of the employee.</param>
-        /// <returns>Return true if successfull, false otherwise.</returns>
+        /// <param name="emp">Object holds the values of the employee.</param>
+        /// <returns>True if successfull, false otherwise.</returns>
         public static bool InsertEmployee(this Employee emp)
         {
             using(con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))
@@ -48,10 +48,10 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This is the extension method for inserting the vehicle data to the database.
+        /// Extension method for inserting the vehicle data to the database.
         /// </summary>
-        /// <param name="vehicle">This object holds the values of the vehicle.</param>
-        /// <returns>Return true if successfull, false otherwise.</returns>
+        /// <param name="vehicle">Object holds the values of the vehicle.</param>
+        /// <returns>True if successfull, false otherwise.</returns>
         public static bool InsertVehicle(this Vehicle vehicle)
         {
             using (con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))
@@ -82,10 +82,10 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This is the extension method for inserting the pass info to the database.
+        /// Extension method for inserting the pass info to the database.
         /// </summary>
-        /// <param name="pass">This object holds the values of the pass.</param>
-        /// <returns>Return true if successfull, false otherwise.</returns>
+        /// <param name="pass">Object holds the values of the pass.</param>
+        /// <returns>True if successfull, false otherwise.</returns>
         public static bool InsertPass(this Pass pass)
         {
             using (con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))
@@ -116,11 +116,11 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used to delete the complete record of employee,
+        /// Delete the complete record of employee,
         /// including vehicle detail and pass info.
         /// </summary>
-        /// <param name="empId">The employee with the empId will get removed. If empId is wrong than data remains same.</param>
-        /// <returns>Return true if emp exists and false otherwise.</returns>
+        /// <param name="empId">Employee with the empId will get removed. If empId is wrong than data remains same.</param>
+        /// <returns>True if emp exists and false otherwise.</returns>
         public static bool DeleteEmployee(int empId)
         {
             using (con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))
@@ -149,9 +149,9 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used to retreive data from the database.
+        /// Retreive data from the database.
         /// </summary>
-        /// <returns>It returns dataset which have all the required data.</returns>
+        /// <returns>Dataset which have all the required data.</returns>
         public static DataSet ShowEmployee()
         {
             using (con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))

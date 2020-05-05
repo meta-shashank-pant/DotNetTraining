@@ -6,7 +6,7 @@ namespace EmployeeRegistration
     class Program
     {
         /// <summary>
-        /// This is the driver method of the program.
+        /// Driver method of the program.
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
@@ -42,7 +42,7 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used to select employee for deletion, this is achieved
+        /// Select employee for deletion, this is achieved
         /// by getting the empId and calling the DeleteEmployee() method.
         /// </summary>
         private static void SelectEmployeeForDeletion()
@@ -58,7 +58,7 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used to print employee on the console.
+        /// Print employee on the console.
         /// </summary>
         /// <param name="dataSet">DataSet holds the data from the database which is displayed here.</param>
         private static void PrintEmployee(DataSet dataSet)
@@ -78,7 +78,7 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used to completely add an employee, vehicle and pass info.
+        /// Add an employee, vehicle and pass info.
         /// </summary>
         private static void AddEmployee()
         {
@@ -97,10 +97,10 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used for taking input from the user regarding Pass.
+        /// Take input from the user regarding Pass.
         /// </summary>
-        /// <param name="vehicleId">It is one of the attribute of Pass class and can be get from vehicle class.</param>
-        /// <param name="vehicleType">It is one of the attribute of Pass class and can be get from vehicle class.</param>
+        /// <param name="vehicleId">Attribute of Pass class and can be get from vehicle class.</param>
+        /// <param name="vehicleType">Attribute of Pass class and can be get from vehicle class.</param>
         /// <returns>It returns Pass object.</returns>
         private static Pass GetPassObject(int vehicleId, string vehicleType)
         {
@@ -127,9 +127,9 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used for taking input from the user regarding Vehicle.
+        /// Take input from the user regarding Vehicle.
         /// </summary>
-        /// <param name="empId">It is one of the attribute of Vehicle class and can be get from employee class.</param>
+        /// <param name="empId">Attribute of Vehicle class and can be get from employee class.</param>
         /// <returns>It return Vehicle object.</returns>
         private static Vehicle GetVehicleObject(int empId)
         {
@@ -149,7 +149,7 @@ namespace EmployeeRegistration
         }
 
         /// <summary>
-        /// This method is used for taking input from the user regarding Employee.
+        /// Take input from the user regarding Employee.
         /// </summary>
         /// <returns>It return employee object.</returns>
         private static Employee GetEmployeeObject()
