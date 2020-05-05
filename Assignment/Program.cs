@@ -58,14 +58,14 @@ namespace Assignment
             JoinOperation();
 
             //Task 7
-            ReadXML();
+            ReadAndPerformXMLTask();
 
         }
 
         /// <summary>
-        /// This method is used to perform task 6 of assignments that are:
-        /// 1. Write a linq query to display the ProductId, ProductTitle and its Category Title.
-        /// 2. Write a linq query to display the ProductTitle and Category Title in the format:
+        /// Perform task 6 of assignments that are:
+        /// 1. Query to display the ProductId, ProductTitle and its Category Title.
+        /// 2. Query to display the ProductTitle and Category Title in the format:
         ///     {ProductTitle: CategoryTitle}
         ///     and if there is no product associated with a particular category
         ///     it should show “No Product” instead of product title.
@@ -76,7 +76,7 @@ namespace Assignment
             var products = CreateProducts();
             var categories = CreateCategory();
 
-            /// In this query join operation is performed on products and categories lists
+            /// Join operation is performed on products and categories lists
             /// Join is performed on the basis of common column, here, CategoryId.
             var query = from product in products
                         join category in categories
@@ -94,8 +94,8 @@ namespace Assignment
             }
             Console.WriteLine();
 
-            /// In this query we are making product and category pairs, if there are no product 
-            /// for an category, then "No Prodyct" will be displayed for that category.
+            /// Here product and category pairs are formed, if there are no product 
+            /// for an category, then "No Product" will be displayed for that category.
             var query2 = from category in categories
                          join product in products
                          on category.CategoryId equals product.CategoryId
@@ -114,7 +114,7 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method will convert product csv file to list of object of class product.
+        /// Convert product csv file to list of object of class product.
         /// </summary>
         /// <returns></returns>
         private static List<Product> CreateProducts()
@@ -137,7 +137,7 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method will convert category csv file to list of object of class category.
+        /// Convert category csv file to list of object of class category.
         /// </summary>
         /// <returns></returns>
         private static List<Category> CreateCategory()
@@ -159,13 +159,13 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method performs all the queries in task 7.
+        /// Performs all the queries in task 7.
         /// Here taks performed are:
         /// 1. Read XML via Linq.
         /// 2. Display Id, Title, Genre and Price of the Books, sorted by Title.
         /// 3. Display the Genre and count of the books under that genre.
         /// </summary>
-        private static void ReadXML()
+        private static void ReadAndPerformXMLTask()
         {
             //  Load is used to load the xml file into an XDocument named "records".
             var records = XDocument.Load("books.xml");
@@ -212,10 +212,10 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method is used to display a range of element from an array.
+        /// Display a range of element from an array.
         /// </summary>
-        /// <param name="start">It is the starting index.</param>
-        /// <param name="end">It is the ending index.</param>
+        /// <param name="start">Starting index.</param>
+        /// <param name="end">Ending index.</param>
         private static void ExtractListFromPositions(int start, int end)
         {
             Console.WriteLine();
@@ -237,15 +237,15 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method is used to filter and display the upper case words in sentence.
+        /// Filter and display the upper case words in sentence.
         /// </summary>
-        /// <param name="sentence"></param>
+        /// <param name="sentence">Input String</param>
         private static void FilterAndDisplayUpperCaseWords(string sentence)
         {
             Console.WriteLine();
             IEnumerable<string> words = sentence.Split(" ");
 
-            //This query is helping in checking if the word is in uppercase or not.
+            //Check if the word is in uppercase or not.
             var upperCaseWords = words.Where(w => w == w.ToUpper());
 
             foreach (var word in upperCaseWords)
@@ -255,7 +255,7 @@ namespace Assignment
         }
 
         /// <summary>
-        /// This method is used to retrieve odd numbers from a list of natural numbers.
+        /// Retrieve odd numbers from a list of natural numbers.
         /// </summary>
         private static void GetOddNumbers()
         {
@@ -266,8 +266,8 @@ namespace Assignment
                 numbers.Add(i + 1);
             }
             /// Where query for getting the odd numbers.
-            /// In this query, i used lambda expression for odd condition,
-            /// it is the most efficient way of writing the query.
+            /// Used lambda expression for odd condition,
+            /// Efficient way of writing the query.
             var oddNumbers = numbers.Where(num => num % 2 == 1);
             foreach (var number in oddNumbers)
             {
