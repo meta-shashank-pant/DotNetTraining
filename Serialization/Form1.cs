@@ -55,9 +55,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// In this method binary serialization is performed on object of Employee class.
+        /// Binary serialization is performed on object of Employee class.
         /// </summary>
-        /// <param name="emp">It is the Employee class object on which binary serialization is going to performed.</param>
+        /// <param name="emp">Employee class object on which binary serialization is going to performed.</param>
         private void BinarySerialization(Employee emp)
         {
             // FileStream provides a Stream for a file, supporting 
@@ -85,9 +85,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// In this method Xml serialization is performed on object of Employee class.
+        /// Xml serialization is performed on object of Employee class.
         /// </summary>
-        /// <param name="emp">It is the Employee class object on which Xml serialization is going to performed.</param>
+        /// <param name="emp">Employee class object on which Xml serialization is going to performed.</param>
         private void XMLSerialization(Employee emp)
         {
             try
@@ -111,9 +111,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// In this method Json serialization is performed on object of Employee class.
+        /// Json serialization is performed on object of Employee class.
         /// </summary>
-        /// <param name="emp">It is the Employee class object on which Json serialization is going to performed.</param>
+        /// <param name="emp">Employee class object on which Json serialization is going to performed.</param>
         private void JSONSerialization(Employee emp)
         {
             try
@@ -138,7 +138,7 @@ namespace Serialization
         }
 
         /// <summary>
-        /// This method is invoked when the user click on Deserialization button present in UI.
+        /// It is invoked when the user click on Deserialization button present in UI.
         /// </summary>
         /// <param name="sender">Contains a reference to the control/object that raised the event.</param>
         /// <param name="e">It contains the event data.</param>
@@ -171,9 +171,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// This method is used to perform Deserialization on Binary File.
+        /// Deserialization on Binary File.
         /// </summary>
-        /// <returns>It returns an Employee object.</returns>
+        /// <returns>Employee object.</returns>
         private Employee BinaryDeserialization()
         {
             Employee emp = null;            
@@ -198,9 +198,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// This method is used to perform Deserialization on Xml File.
+        /// Deserialization on Xml File.
         /// </summary>
-        /// <returns>It returns an Employee object.</returns>
+        /// <returns>Employee object.</returns>
         private Employee XMLDeserialization() 
         {
             Employee emp = new Employee();
@@ -223,9 +223,9 @@ namespace Serialization
         }
 
         /// <summary>
-        /// This method is used to perform Deserialization on Json File.
+        /// Deserialization on Json File.
         /// </summary>
-        /// <returns>It returns an Object which is type casted in Employee.</returns>
+        /// <returns>Object which is type casted in Employee.</returns>
         private Object JSONDeserialization()
         {
             JObject obj = null;
@@ -250,10 +250,10 @@ namespace Serialization
 
         /// <summary>
         /// It is an error provider.
-        /// This method is used to put validation constraint on Salary field, in case user enters non numeric values.
+        /// Put validation constraint on Salary field, in case user enters non numeric values.
         /// </summary>
         /// <param name="sender">Contains a reference to the control/object that raised the event.</param>
-        /// <param name="e">It is true if the event should be canceled, false otherwise.</param>
+        /// <param name="e">true if the event should be canceled, false otherwise.</param>
         private void ErrorProviderSalary(object sender, CancelEventArgs e)
         {
             try
@@ -270,8 +270,8 @@ namespace Serialization
         }
 
         /// <summary>
-        /// It is an error provider.
-        /// This method is used to put validation constraint on Drop down menu, in case user does not select any option. 
+        /// It is Error provider.
+        /// Validation constraint on Drop down menu, in case user does not select any option. 
         /// </summary>
         /// <param name="sender">Contains a reference to the control/object that raised the event.</param>
         /// <param name="e">It is true if the event should be canceled, false otherwise.</param>
