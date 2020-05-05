@@ -37,11 +37,11 @@ namespace CSharpAdvanced
     {
         Calender calender;
 
-        //This variable holds the current stat of the variable, true if disposed and false otherwise.
+        //Current stat of the variable/object, true if disposed and false otherwise.
         bool disposing;
 
         /// <summary>
-        /// This class is used to return the hardcoded value of Date.
+        /// Hardcoded value of Date is seted.
         /// </summary>
         /// <returns>It is string holding the date.</returns>
         public string GetDate()
@@ -74,7 +74,8 @@ namespace CSharpAdvanced
         }
 
         /// <summary>
-        /// This method can be called manually or it can be called automatically by "using" statement.
+        /// Object is disposed with help of this method it can be done,
+        /// manually or it can be called automatically by "using" statement.
         /// </summary>
         public void Dispose()
         {
@@ -83,11 +84,11 @@ namespace CSharpAdvanced
         }
 
         /// <summary>
-        /// This is the class method and can be used by child class of this class, if any.
-        /// This method is used to dispose the object which will not come in use further on the program.
+        /// It is class method and can be used by child class of this class, if any.
+        /// Dispose the object which will not come in use further on the program.
         /// This will reduce the overhead for garbage collection.
         /// </summary>
-        /// <param name="disposing">This is the boolean parameter telling whether to dispose the object or not.</param>
+        /// <param name="disposing">Boolean parameter telling whether to dispose the object or not.</param>
         protected virtual void Dispose(bool disposing)
         {
             //If object is already disposed.
