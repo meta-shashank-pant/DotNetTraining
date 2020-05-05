@@ -23,7 +23,6 @@ namespace ZooManagement
             zones.Add(this);
         }
 
-        //Getter and Setter
         public string AnimalCategory
         {
             get { return animalCategory; }
@@ -34,7 +33,11 @@ namespace ZooManagement
             get { return cages; }
         }
         
-        //Add cage
+        /// <summary>
+        /// Add cage object to the cage list inside zone.
+        /// </summary>
+        /// <param name="cage">Cage object</param>
+        /// <returns>true always</returns>
         public bool AddCage(Cage cage)
         {
             if(currentNumber < numberOfCages)
@@ -51,12 +54,20 @@ namespace ZooManagement
             
         }
 
-        public bool hasPark()
+        /// <summary>
+        /// Check Park in the Zone.
+        /// </summary>
+        /// <returns>true is available, false otherwise</returns>
+        public bool HasPark()
         {
             return isPark;
         }
 
-        public bool hasCanteen()
+        /// <summary>
+        /// Check Canteen in the zone.
+        /// </summary>
+        /// <returns>true is available, false otherwise</returns>
+        public bool HasCanteen()
         {
             return isCanteen;
         }
@@ -76,14 +87,17 @@ namespace ZooManagement
             animals = new List<Animal>();
         }
 
-        //Delete animal from the list
+        /// <summary>
+        /// Delete animal from the list
+        /// </summary>
+        /// <param name="animal">Animal object</param>
         public void DeleteAnimalFromList(Animal animal)
         {
             animals.Remove(animal);
             currentNumberOfAnimals--;
         }
 
-        //Getter and Setters
+        
         public string TypeOfAnimal
         {
             get { return this.typeOfAnimal; }
@@ -104,7 +118,11 @@ namespace ZooManagement
             get { return animals; }
         }
 
-        //Add animal to cage
+        /// <summary>
+        /// Add animal to cage
+        /// </summary>
+        /// <param name="animal">Animal object</param>
+        /// <returns>true if current number of animal is less than capacity, false otherwise.</returns>
         public bool AddAnimalToList(Animal animal)
         {
             if(currentNumberOfAnimals < animalCapacity)

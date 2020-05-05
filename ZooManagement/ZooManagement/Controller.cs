@@ -6,7 +6,11 @@ namespace ZooManagement
 {
     class Controller
     {
-
+        /// <summary>
+        /// Take controls from Program class.
+        /// </summary>
+        /// <param name="choice">User choice of operation selection.</param>
+        /// <returns>true if returned to main menu, false otherwise.</returns>
         public static bool StartSystem(int choice)
         {
             bool status;

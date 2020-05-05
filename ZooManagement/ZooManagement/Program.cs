@@ -31,7 +31,11 @@ namespace ZooManagement
 
         }
 
-        //This method is used to create object of Cage class.
+        /// <summary>
+        /// Create object of Cage class.
+        /// </summary>
+        /// <param name="zone">Zone object</param>
+        /// <returns>Cage object.</returns>
         public static Cage CreateCageObject(Zone zone)
         {
             String category = zone.AnimalCategory;
@@ -130,7 +134,10 @@ namespace ZooManagement
             }
         }
 
-        //This method takes input for capacity.
+        /// <summary>
+        /// Taking input from user about cage.
+        /// </summary>
+        /// <returns>Cage capacity.</returns>
         static int CageCapacity()
         {
             wrongCapacity:
@@ -144,7 +151,11 @@ namespace ZooManagement
             return capacity; 
         }
 
-        //This method helps SelectZone() method for selecting the zone on the basis of animal category.
+        /// <summary>
+        /// Helps SelectZone() method for selecting the zone on the basis of animal category.
+        /// </summary>
+        /// <param name="category">Category of animal.</param>
+        /// <returns></returns>
         static Zone getZone(string category)
         {
             List<Zone> availableZones = new List<Zone>();
@@ -174,7 +185,10 @@ namespace ZooManagement
             return availableZones[index - 1];
         }
 
-        //This method is used to get the zone by user inputs.
+        /// <summary>
+        /// Get the zone by user inputs.
+        /// </summary>
+        /// <returns>Zone object</returns>
         public static Zone SelectZone()
         {
             try
@@ -218,7 +232,10 @@ namespace ZooManagement
 
         }
 
-        //This method will return animal object corresponding to given id.
+        /// <summary>
+        /// Get Animal bu their id.
+        /// </summary>
+        /// <returns>Animal object</returns>
         public static Animal GetAnimalById()
         {
             DisplayAnimals();
@@ -235,7 +252,9 @@ namespace ZooManagement
 
         }
 
-        //This method is used to display the zoo on the basis of zones.
+        /// <summary>
+        /// Display the zoo on the basis of zones.
+        /// </summary>
         public static void DisplayAnimals()
         {
             int i = 1, j = 1;
@@ -259,7 +278,9 @@ namespace ZooManagement
             }
         }
 
-        //This struct holds the value of name, age and weight of animal
+        /// <summary>
+        /// This struct holds the value of name, age and weight of animal
+        /// </summary>
         public struct AnimalAttributes
         {
             public string name;
@@ -267,7 +288,11 @@ namespace ZooManagement
             public double weight;
         }
 
-        //This method is used for checking Duplicacy in name.
+        /// <summary>
+        /// Checking Duplicacy in name.
+        /// </summary>
+        /// <param name="name">String for checking duplicacy.</param>
+        /// <returns>true is no duplicacy, false otherwise.</returns>
         static bool CheckDuplicateName(string name)
         {
             foreach(Animal animal in DbAnimals)
@@ -281,7 +306,10 @@ namespace ZooManagement
             return true;
         }
 
-        //This method is used to return animal object to controller
+        /// <summary>
+        /// Create Animal object.
+        /// </summary>
+        /// <returns>Animal Object</returns>
         public static Animal CreateAnimalObject()
         {
             try
@@ -354,7 +382,10 @@ namespace ZooManagement
 
         }
 
-        //This method contains the common code from CreateAnimalObject
+        /// <summary>
+        /// Contains the common code from CreateAnimalObject
+        /// </summary>
+        /// <returns>AnimalAttribute Object</returns>
         public static AnimalAttributes SetAnimalObject()
         {
             string name;
@@ -389,7 +420,10 @@ namespace ZooManagement
 
         }
 
-        //Input for various data types: int, string, double.
+        /// <summary>
+        /// Input for string.
+        /// </summary>
+        /// <returns>string input</returns>
         public static string TakeStringInput()
         {
             try
@@ -404,6 +438,10 @@ namespace ZooManagement
             }
         }
 
+        /// <summary>
+        /// Input for integer.
+        /// </summary>
+        /// <returns>integer input.</returns>
         public static int TakeIntegerInput()
         {
             try
@@ -418,6 +456,10 @@ namespace ZooManagement
             }
         }
 
+        /// <summary>
+        /// Input for double.
+        /// </summary>
+        /// <returns>double output.</returns>
         public static double TakeDoubleInput()
         {
             try
@@ -432,7 +474,9 @@ namespace ZooManagement
             }
         }
 
-        //Predefined data
+        /// <summary>
+        /// Predefined Data.
+        /// </summary>
         static void PreBuildData()
         {
             //By default cages and animal enteries for easy use:

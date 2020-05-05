@@ -6,7 +6,11 @@ namespace ZooManagement
 {
     class Service
     {
-        //This method is used to add an animal to cage.
+        /// <summary>
+        /// Add an animal to cage.
+        /// </summary>
+        /// <param name="animal">Animal object</param>
+        /// <returns>true if operation is successful, false otherwise.</returns>
         public static bool AddAnimal(Animal animal)
         {
             try
@@ -24,7 +28,11 @@ namespace ZooManagement
             return true;
         }
 
-        //This method will find if cage is available in particular zone for that animal.
+        /// <summary>
+        /// Find if cage is available in particular zone for that animal.
+        /// </summary>
+        /// <param name="animal">Animal object</param>
+        /// <returns>Cage object is avialble, null otherwise.</returns>
         public static Cage CageForAnimal(Animal animal)
         {
             foreach (Zone zone in Zone.zones)
@@ -48,7 +56,12 @@ namespace ZooManagement
             return null;
         }
 
-        //This method is used to remove an animal from cage.
+
+        /// <summary>
+        /// Remove an animal from cage.
+        /// </summary>
+        /// <param name="animal">Animal object</param>
+        /// <returns>true if operation is successful, false otherwise.</returns>
         public static bool DeleteAnimal(Animal animal)
         {
             foreach (Zone zone in Zone.zones)
@@ -74,7 +87,12 @@ namespace ZooManagement
             return false;
         }
 
-        //This method will add the cage in an Zone for specific animal.
+        /// <summary>
+        /// Add the cage in an Zone for specific animal.
+        /// </summary>
+        /// <param name="zone">Zone object</param>
+        /// <param name="cage">Cage object</param>
+        /// <returns>true if cage is avialable, false otherwise</returns>
         public static bool AddCage(Zone zone, Cage cage)
         {
             return zone.AddCage(cage);
