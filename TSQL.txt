@@ -1,0 +1,157 @@
+--------------USING--------------------
+select EmpId, FirstName + ' ' + isNull(LastName, '') as [Full Name], Salary * 12 as AnnualSalary from tbl_Employees
+
+------------TOP-----------------
+select Top 5 * from tbl_Employees
+select Top 10 percent * from tbl_Employees (For ex: 10 % of 20 is 2, so 2 record will be selected)
+
+------------DISTICT--------------- (Get the distinct value)
+select distinct department from tbl_Employees
+
+------------Operators-------------------
+-> in
+select * from tbl_Employees
+where FirstName in ('Mohit','Raj','Ajay')
+
+-> between
+select * from tbl_Employees
+where Salary between 40000 and 60000
+
+-> like
+select * from tbl_Employees
+where FirstName like 'A%' (% means any number of characters after A)
+// or
+where FirstName like 'A___' ( _ means definite number of characters after A, here 3 underscore means only 3 character can come after A)
+
+-> is null
+select * from tbl_Employees
+where LastName is null (or we can use "is not null")
+
+-----------------Order by--------------------
+select EmpId, FirstName, Salary from tbl_Employees
+order by Salary / Salary desc / 3 (i.e we can even specify the column number in projection, here 3 means Salary.)
+
+-> Multiple sorting
+select EmpId, FirstName, Salary from tbl_Employees
+order by Salary desc, FirstName asc
+
+--------------SubQuery-------------------------
+-- All employees who earn more than mukesh and are in same department
+select * from tbl_Employees
+where Salary > (select Salary from tbl_Employee where FirstName = 'Mukesh')
+and Department = (select Salary from tbl_Employee where FirstName = 'Mukesh')
+
+--All employees who work on engineering department.
+select FirstName from tbl_employees
+where Department = (select DeptId from tbl_Departments where DeptName = 'Engineering')
+
+--When we get multiple result from subquery
+select * from tbl_Employees where Salary > (any / all)					--->(Here we can use "any" or "all": 
+(select Salary from tbl_Employee where FirstName = 'Raj')  //Suppose there are 2 Raj.		any- it will give all the records satisfying any condition that is retrieved.
+												all- it will give the records that satisfy all of the condition.)
+
+--------------Co-related Sub query---------------------------
+--Get employee with the 2nd highest salary
+select * from tbl_Employees as emp1
+where 2 = (select count(emp2.FirstName) from tbl_Employees as emp2 where emp1.Salary <= emp2.Salary)
+
+--------------Set Operations------------------------
+select * from XEmployees
+Union / Intersect / Except				(We can also use UNION ALL so that common fields will occur in output )
+select * from Employees
+
+---------------Constraints----------------------------
+create table student(
+.
+.
+.
+Mobile char(10),
+Gender char(1) constraint student_gender_chk check(Gender in ('M', 'F')),
+Fees numeric(8, 2),
+constraint student_mobile_un unique(Mobile),
+constraint student_fees_chk check(Fees > 500)
+)
+
+-- We can also alter table afterwards for constarint
+alter table tabl_employees add constraint employee_gender_chk check(Gender in ('M', 'F'))
+
+-- We can add or drop constraint using alter command, we should give constraint a name for droping.
+
+---------------Foreign Key Constraint----------------------- //Referential integrity
+create table Student(
+.
+.
+.
+.
+.
+constraint student_course_fk foreign key(Course) references tbl_Courses(CourseId) on delete/update  "set null" / "cascade"
+)
+
+--> Here if the column with the CourseId is updated or deleted than we can control what will happen to the enteries
+--> in the Student table by specifying as shown in the above example.
+--> set null will set the values to the null, where as "cascade" will do the same changes it has done to the foreign table, if deleted then delete, if updated then update
+
+---------------- VIEWS ------------------------------
+- It is a virtual table.
+- Contains sql select statement
+- Provide restricted access to data.
+- DML can be performed through views.
+
+-- Create view
+	create view EmpD20 as
+	select EmpId, FirstName, Salary * 12 as AnnualSalary, Department
+	from tbl_Employees
+	where Department = 20;
+
+--- Now performing DML Operations:
+
+-- Don't for Delete
+	1. DISTINCT Keyword
+	2. Group Function
+	3. Group By Clause
+
+-- Don't for Update
+	1. DISTINCT Keyword
+	2. Group Function
+	3. Group By Clause
+	4. Contains Expression (like in above example "AnnualSalary", we can't update or insert anything inside AnnualSalary)
+
+-- Don't for Insert
+	1. DISTINCT Keyword
+	2. Group Function
+	3. Group By Clause
+	4. Contains Expression (like in above example "AnnualSalary", we can't update or insert anything inside AnnualSalary)
+	5. Not Null column excluded.
+
+----- Validating Views ----
+-- DML OPerations can be validated by using "WITH CHECK OPTION"
+Example: 
+	create view EmpD20 as
+	select EmpId, FirstName, Salary * 12 as AnnualSalary, Department
+	from tbl_Employees
+	where Department = 20
+	with check option;
+
+
+--- If we want to make complete view read only then:
+	create view EmpD20 as
+	select EmpId, FirstName, Salary * 12 as AnnualSalary, Department
+	from tbl_Employees
+	where Department = 20
+	union
+	create view EmpD20 as
+	select EmpId, FirstName, Salary * 12 as AnnualSalary, Department
+	from tbl_Employees
+	where 1 = 2
+	with check option; (The given condition will never get true hence any field in the view can't get changed.)
+
+
+--------------------- T-SQL -------------------
+
+- Stand for Transact-SQL
+- It includes procedural programming
+- Variables, Control Statement are part of it
+- Ensures Data consistency
+- Support exception handling
+- Makes code modular
+- Helps in maintaining batches
