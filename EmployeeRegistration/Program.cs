@@ -136,8 +136,7 @@ namespace EmployeeRegistration
             Vehicle vehicle = new Vehicle();
 
             vehicle.EmpId = empId;
-            Console.Write("Enter Vehicle Id: ");
-            vehicle.VehicleId = Convert.ToInt32(Console.ReadLine());
+            vehicle.VehicleId = DaoImplementation.GetVehicleId();
             Console.Write("Enter Vehicle Name: ");
             vehicle.VehicleName = Console.ReadLine();
             Console.Write("Enter Vehicle Number: ");

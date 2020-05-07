@@ -165,5 +165,31 @@ namespace EmployeeRegistration
                 return ds;
             }         
         }
+
+        /// <summary>
+        /// Get Vehicle Id from the database incremented by 1.
+        /// </summary>
+        /// <returns>vehicle id for the next entry.</returns>
+        public static int GetVehicleId()
+        {
+            using (con = new SqlConnection("data source=.; database=Employee; integrated security=SSPI"))
+            {
+                SqlCommand cmd = new SqlCommand($"select vehicleId from vehicle where vehicleId = (select max(vehicleId) from vehicle)", con);
+                con.Open();
+                int vehicleId;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    vehicleId = Convert.ToInt32(cmd.ExecuteScalar()) + 1;
+                }
+                catch (Exception e)
+                {
+                    vehicleId = 1;
+                    Console.WriteLine(e.Message);
+                }
+                con.Close();
+                return vehicleId;
+            }
+        }
     }
 }
