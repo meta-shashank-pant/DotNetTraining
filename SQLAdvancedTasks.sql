@@ -119,6 +119,10 @@
 	from Product
 
 -- Task 7 (Aggregate Functions)
+	/*
+		Aggregate Function are max, min, count, avg, sum. These function can directly be applied to the table
+		or it can be applied with the GROUP BY clause.
+	*/										     
 	
 	select max(Price) as [Max Price] from Product;
 
@@ -126,6 +130,6 @@
 
 	select avg(Price) as [Avg Price] from Product;
 
-	select sum(Price) as [Max Price] from Product;
+	select sum(Price) as [Total Price] from Product;
 
-	select count(Price) as [Max Price] from Product;
+	select count(Price) as [Count] from Product;
