@@ -16,6 +16,11 @@ namespace MVCAssignment.Controllers
         private UserRolesEntities db = new UserRolesEntities();
 
         // GET: AppUsers
+        /// <summary>
+        /// Displays the list of users registered.
+        /// Every method with Admin role can be accessed by admin only.
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
@@ -23,6 +28,11 @@ namespace MVCAssignment.Controllers
         }        
 
         // GET: AppUsers/Details/5
+        /// <summary>
+        /// Retreive user information with id from the database.
+        /// </summary>
+        /// <param name="id">Id is integer specifying the primary key.</param>
+        /// <returns></returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,8 +55,11 @@ namespace MVCAssignment.Controllers
         }
 
         // POST: AppUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Create or Register a new user after log in, this can be done by admin only.
+        /// </summary>
+        /// <param name="appUser">AppUser class object holding the details of the employee entered.</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -62,7 +75,12 @@ namespace MVCAssignment.Controllers
             return View(appUser);
         }
 
-        // GET: AppUsers/Edit/5        
+        // GET: AppUsers/Edit/5
+        /// <summary>
+        /// Update the user information with given id from database.
+        /// </summary>
+        /// <param name="id">Id is integer specifying the primary key.</param>
+        /// <returns></returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +119,11 @@ namespace MVCAssignment.Controllers
         }
 
         // GET: AppUsers/Delete/5
+        /// <summary>
+        /// Delete the user information with given id from database.
+        /// </summary>
+        /// <param name="id">Id is integer specifying the primary key.</param>
+        /// <returns></returns>
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {

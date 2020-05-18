@@ -10,6 +10,11 @@ using MVCAssignment;
 
 namespace MVCAssignment.Controllers
 {
+    /// <summary>
+    /// Only use of this controller is to view, create, reset and delete the user role(Admin and User).
+    /// Only Admin can access this controller.
+    /// </summary>
+    [Authorize(Roles = "Admin")]
     public class UserRolesController : Controller
     {
         private UserRolesEntities db = new UserRolesEntities();
