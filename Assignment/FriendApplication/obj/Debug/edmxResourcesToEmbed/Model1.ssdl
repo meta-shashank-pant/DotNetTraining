@@ -4,9 +4,9 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Place" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Place" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="FriendDbModelStoreContainer">
     <EntitySet Name="Friend" EntityType="Self.Friend" Schema="dbo" store:Type="Tables" />

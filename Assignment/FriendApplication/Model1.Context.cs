@@ -25,6 +25,6 @@ namespace FriendApplication
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Friend> Friend { get; set; }
+        public virtual DbSet<Friend> Friends { get; set; }
     }
 }

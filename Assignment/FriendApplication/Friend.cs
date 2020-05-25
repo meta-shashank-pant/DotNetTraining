@@ -9,10 +9,9 @@
 
 namespace FriendApplication
 {
+    using FriendApplication.Models;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using FriendApplication.Models;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Friend
@@ -21,7 +20,7 @@ namespace FriendApplication
         public int Id { get; set; }
 
         [StringLength(30, MinimumLength = 1)]
-        [ Display(Name = "Friend Name"), CustomRequired]
+        [Display(Name = "Friend Name"), CustomRequired]
         public string Name { get; set; }
 
         [StringLength(25), Required]

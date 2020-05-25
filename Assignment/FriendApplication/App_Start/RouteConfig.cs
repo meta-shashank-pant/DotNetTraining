@@ -13,13 +13,13 @@ namespace FriendApplication
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*routes.MapRoute(
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Friends", action = "Index", id = UrlParameter.Optional }
-            );*/
+            );
 
-            routes.MapMvcAttributeRoutes();
+            //routes.MapMvcAttributeRoutes();
         }
     }
 }

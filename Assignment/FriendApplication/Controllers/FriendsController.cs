@@ -15,28 +15,19 @@ namespace FriendApplication.Controllers
         private FriendDbEntities db = new FriendDbEntities();
 
         // GET: Friends
-        //These are routing attribute, Mentioned in Route config.
-        [Route("")]
-        [Route("Home")]
-        [Route("Home/Index")]
         public ActionResult Index()
         {
-            return View(db.Friend.ToList());
+            return View(db.Friends.ToList());
         }
 
         // GET: Friends/Details/5
-        /// <summary>
-        /// Get details of an friend with the given id.
-        /// </summary>
-        /// <param name="id">Integer id representing the primary key.</param>
-        /// <returns></returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Friend friend = db.Friend.Find(id);
+            Friend friend = db.Friends.Find(id);
             if (friend == null)
             {
                 return HttpNotFound();
@@ -45,18 +36,14 @@ namespace FriendApplication.Controllers
         }
 
         // GET: Friends/Create
-        /// <summary>
-        /// Create a new friend and store in database.
-        /// </summary>
-        /// <returns></returns>
         public ActionResult Create()
         {
-            using(var context = new FriendDbEntities())
+            using (var context = new FriendDbEntities())
             {
-                var Friendid = (from f in context.Friend
-                          select f.Id).Max();
                 try
                 {
+                    var Friendid = (from f in context.Friends
+                                    select f.Id).Max();
                     Friendid = Convert.ToInt32(Friendid);
                     ViewBag.FriendId = Friendid + 1;
                 }
@@ -66,17 +53,18 @@ namespace FriendApplication.Controllers
                 }
                 return View();
             }
-            
         }
 
-        // POST: Friends/Create        
+        // POST: Friends/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]     
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Place")] Friend friend)
         {
             if (ModelState.IsValid)
             {
-                db.Friend.Add(friend);
+                db.Friends.Add(friend);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -85,18 +73,13 @@ namespace FriendApplication.Controllers
         }
 
         // GET: Friends/Edit/5
-        /// <summary>
-        /// Edit the friend with the given id.
-        /// </summary>
-        /// <param name="id">Integer id representing the primary key.</param>
-        /// <returns></returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Friend friend = db.Friend.Find(id);
+            Friend friend = db.Friends.Find(id);
             if (friend == null)
             {
                 return HttpNotFound();
@@ -104,7 +87,9 @@ namespace FriendApplication.Controllers
             return View(friend);
         }
 
-        // POST: Friends/Edit/5        
+        // POST: Friends/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Place")] Friend friend)
@@ -119,18 +104,13 @@ namespace FriendApplication.Controllers
         }
 
         // GET: Friends/Delete/5
-        /// <summary>
-        /// Delete the friend entry from the database.
-        /// </summary>
-        /// <param name="id">Integer id representing the primary key.</param>
-        /// <returns></returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Friend friend = db.Friend.Find(id);
+            Friend friend = db.Friends.Find(id);
             if (friend == null)
             {
                 return HttpNotFound();
@@ -143,8 +123,8 @@ namespace FriendApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Friend friend = db.Friend.Find(id);
-            db.Friend.Remove(friend);
+            Friend friend = db.Friends.Find(id);
+            db.Friends.Remove(friend);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
