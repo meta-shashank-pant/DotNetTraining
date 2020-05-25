@@ -17,7 +17,7 @@ namespace FriendApplication
 
     public partial class Friend
     {
-        [ReadOnly(true), Display(Name = "Friend Id")]
+        [Display(Name = "Friend Id")]
         public int Id { get; set; }
 
         [StringLength(30, MinimumLength = 1)]
