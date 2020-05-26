@@ -1,0 +1,67 @@
+﻿@model  WebApiAssignment.Employee
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="col-md-10 col-md-offset-1">
+    <div class="well">
+        <!--This table contains the fields that we want to capture to register a new user-->
+        <table class="table table-bordered">
+            <thead>
+                <tr class="success">
+                    <th colspan="2">
+                        Employee Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td id="empId"></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td id="firstName"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td id="lastName"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td id="gender"></td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td id="salary"></td>
+                </tr>
+                <tr class="success">
+                    <td colspan="2">
+                        <a type="button" class="btn btn-primary" href="/Home/Index">Go to index</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '/api/Employees/' +@Model.ID,
+            method: 'GET',
+            success: function (data) {
+                $('#empId').append('<span>' + data.ID + '</span>');
+                $('#firstName').append('<span>' + data.FirstName + '</span>');
+                $('#lastName').append('<span>' + data.LastName + '</span>');
+                $('#gender').append('<span>' + data.Gender + '</span>');
+                $('#salary').append('<span>' + data.Salary + '</span>');
+            }
+        })
+    });
+</script>

@@ -1,0 +1,108 @@
+﻿@model WebApiAssignment.Employee
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="col-md-10 col-md-offset-1">
+    <div class="well">
+        <!--This table contains the fields that we want to capture to register a new user-->
+        <table class="table table-bordered">
+            <thead>
+                <tr class="success">
+                    <th colspan="2">
+                        Employee Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td><span>@Model.ID</span></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><span>@Model.FirstName</span></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><span>@Model.LastName</span></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td><span>@Model.Gender</span></td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td><span>@Model.Salary</span></td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        <a type="button" class="btn btn-primary" href="/Home/Index">Go to index</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" id="btnDelete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Bootstrap modal dialog that shows up when regsitration is successful-->
+        <div class="modal fade" tabindex="-1" id="successModal"
+             data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a type="button" href="/Home/Index" class="close">
+                            &times;
+                        </a>
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <h2 class="modal-title">Deleted Successfully!</h2>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" href="/Home/Index" class="btn btn-success">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Bootstrap alert to display any validation errors-->
+        <div id="divError" class="alert alert-danger collapse">
+            <a id="linkClose" href="#" class="close">&times;</a>
+            <div id="divErrorText"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Close the bootstrap alert
+        $('#linkClose').click(function () {
+            $('#divError').hide('fade');
+        });
+
+        // Save the new user details
+        $('#btnDelete').click(function () {
+            empId = @Model.ID;
+            $.ajax({
+                url: '/api/Employees/' + empId,
+                method: 'DELETE',                
+                success: function () {
+                    $('#successModal').modal('show');
+                },
+                error: function (jqXHR) {
+                    $('#divErrorText').text(jqXHR.responseText);
+                    $('#divError').show('fade');
+                }
+            });
+        });
+    });
+</script>
+
+
